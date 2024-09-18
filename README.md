@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+# Basketball Performance Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This is a basketball performance dashboard that allows you to visualize important team data regarding back-to-back (B2B) games. The application currently supports two types of visualizations:
 
-In the project directory, you can run:
+1. **B2B Game Schedules**: Displays teams' back-to-back game schedules.
+2. **B2B Win-Loss Records**: Displays the win-loss record for teams in back-to-back games.
 
-### `npm start`
+To access these visuals, you'll need to log in with the appropriate credentials. Different users have access to different types of visuals.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Login-based access**: Each user is granted specific access to one of the visualizations based on their role.
+- **B2B Game Schedule**: View a chart displaying each team's back-to-back game schedule.
+- **B2B Win-Loss Record**: View a chart displaying how well teams perform in back-to-back games (wins and losses).
 
-### `npm test`
+## Login Credentials
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Username  | Password     | Visualization                          |
+|-----------|--------------|-----------------------------------------|
+| user_one  | password123  | B2B Game Schedule (ScheduleB2BChart)    |
+| user_two  | 123password  | B2B Win-Loss Record (WinLossB2BChart)   |
 
-### `npm run build`
+### Example Login:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **User One**:
+  - **Username**: `user_one`
+  - **Password**: `password123`
+  - Visualization: Displays the B2B Game Schedule.
+  
+- **User Two**:
+  - **Username**: `user_two`
+  - **Password**: `123password`
+  - Visualization: Displays the B2B Win-Loss Record.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Visualizations
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1. **B2B Game Schedule (Available to user_one)**
 
-### `npm run eject`
+- **Description**: This visualization shows a schedule of back-to-back (B2B) games for each NBA team. A B2B game is defined as two consecutive games played on consecutive days by the same team. This chart helps the user understand the team's schedule density and how frequently they are involved in B2B games.
+  
+- **How it works**: 
+  - Each team is plotted on the X-axis.
+  - The Y-axis represents the dates of the B2B games.
+  - The chart highlights when teams play two games on consecutive days, which can affect team performance due to fatigue.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Component**: `ScheduleB2BChart.js`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 2. **B2B Win-Loss Record (Available to user_two)**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Description**: This visualization shows the win-loss record for each team when they are involved in back-to-back (B2B) games. It gives insight into how teams perform under the pressure of playing consecutive games with no rest days in between.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **How it works**:
+  - The X-axis lists the teams.
+  - The Y-axis shows the number of wins and losses in B2B games.
+  - Each team has two bars: one for wins and one for losses, providing a clear view of their performance in B2B situations.
 
-## Learn More
+- **Component**: `WinLossB2BChart.js`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Installation and Setup
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
 
-### Code Splitting
+2. **Run backend**:
+```bash
+   cd backend
+   python app.py
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. **Run frontend**:
+```bash
+   cd frontend
+   npm install 
+   npm start
+```
 
-### Analyzing the Bundle Size
+4. **Access the application**:
+   - Open your web browser and navigate to `http://localhost:3000`
+   - Use the following credentials to log in:
+     - For B2B Game Schedule: 
+       - Username: `user_one`
+       - Password: `password123`
+     - For B2B Win-Loss Record:
+       - Username: `user_two`
+       - Password: `123password`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Usage
 
-### Making a Progressive Web App
+1. On the login page, enter the appropriate username and password based on which visualization you want to see.
+2. After successful login, you will be presented with the corresponding visualization:
+   - `user_one` will see the B2B Game Schedule
+   - `user_two` will see the B2B Win-Loss Record
+3. To switch between visualizations, you need to log out and log in with the other user's credentials.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Note: The application uses session-based authentication, so make sure your browser accepts cookies from localhost.
 
-### Advanced Configuration
+If the frontend does not load correctly, ensure that the backend server is running and accessible at http://localhost:5000.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
