@@ -64,13 +64,13 @@ To access these visuals, you'll need to log in with the appropriate credentials.
    ```bash
    git clone <repository-url>
 
-2. **Run Flaskbackend**:
+2. **Run Flask backend**:
 ```bash
    cd backend
    python app.py
 ```
 
-3. **Run Reactfrontend**:
+3. **Run React frontend**:
 ```bash
    cd frontend
    npm install 
